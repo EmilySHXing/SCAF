@@ -44,7 +44,7 @@ public class HomeFragment extends Fragment {
         String currentMonth = monthFormat.format(date);
         Spannable dateSpan = new SpannableString(currentDate);
         dateSpan.setSpan(
-                new ForegroundColorSpan(Color.RED),
+                new ForegroundColorSpan(0xffa2999e),
                 3,6,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         dateSpan.setSpan(
