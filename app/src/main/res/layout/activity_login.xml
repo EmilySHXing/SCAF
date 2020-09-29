@@ -84,7 +84,7 @@
 
     <Button
         android:id="@+id/login"
-        android:text="@string/action_sign_in"
+        android:text="Sign In"
         android:textColor="#FFFFFFFF"
         android:textSize="20sp"
         android:fontFamily="@font/quicksand"
