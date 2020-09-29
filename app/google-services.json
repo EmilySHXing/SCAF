@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "558187772928",
+    "firebase_url": "https://scaf-4f2ed.firebaseio.com",
+    "project_id": "scaf-4f2ed",
+    "storage_bucket": "scaf-4f2ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558187772928:android:35ac24e4f026c89ecb6ce5",
+        "android_client_info": {
+          "package_name": "com.example.scaf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "558187772928-bje49oh7jnj2sui7u96n2jmf2iigj6eu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1xgGOaCtiP6gjmom8l7fjsVNOz17Bluc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "558187772928-bje49oh7jnj2sui7u96n2jmf2iigj6eu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

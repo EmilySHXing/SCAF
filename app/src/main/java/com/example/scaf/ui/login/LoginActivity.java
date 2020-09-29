@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.example.scaf.MainActivity;
 import com.example.scaf.R;
+import com.example.scaf.RegisterActivity;
 import com.example.scaf.ui.login.LoginViewModel;
 import com.example.scaf.ui.login.LoginViewModelFactory;
 
@@ -43,6 +44,16 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+        final TextView registerText = findViewById(R.id.signuplink);
+
+        registerText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -110,6 +121,8 @@ public class LoginActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">SCAF</string>
     <!-- Strings related to login -->
+    <string name="prompt_name">User Name</string>
+    <string name="prompt_pet_name">Pet Name</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
-    <string name="action_sign_up">Don\'t have an account? Sign up!</string>
+    <!--    <string name="action_sign_up">Don\'t have an account? Sign up!</string>-->
+    <string name="action_sign_up">Don\'t have an account? <a href='http://google.com'>Sign up!</a></string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>

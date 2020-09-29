@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -12,55 +11,74 @@
     android:background="@drawable/bg"
     android:backgroundTint="#40FFFFFF"
     android:backgroundTintMode="src_over"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".RegisterActivity">
 
     <TextView
-        android:id="@+id/loginimg"
-        android:layout_width="130dp"
+        android:id="@+id/signuptitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/app_name"
-        android:textSize="40sp"
+        android:layout_marginTop="100dp"
+        android:text="Create Account"
+        android:textSize="50sp"
         android:textColor="@color/colorCoffee"
         android:textStyle="bold"
         android:fontFamily="@font/alexbrush"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:drawableTopCompat="@drawable/ic_menu_pet" />
+        />
 
-    <TextView
-        android:id="@+id/slogan"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/slogan"
-        android:textSize="20sp"
-        android:textColor="@color/colorBrown"
-        android:textStyle="bold"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        android:hint="@string/prompt_name"
         android:fontFamily="@font/quicksand"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/ic_menu_account"
+        android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginimg"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/signuptitle"
+        android:drawableStart="@drawable/ic_menu_account" />
+
+    <EditText
+        android:id="@+id/petname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:hint="@string/prompt_pet_name"
+        android:fontFamily="@font/quicksand"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/ic_menu_smallpet"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        android:drawableStart="@drawable/ic_menu_smallpet" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:hint="@string/prompt_email"
         android:fontFamily="@font/quicksand"
         android:textStyle="bold"
-        android:drawableLeft="@drawable/ic_menu_account"
+        android:drawableLeft="@drawable/ic_menu_email"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slogan"
-        android:drawableStart="@drawable/ic_menu_account" />
+        app:layout_constraintTop_toBottomOf="@+id/petname"
+        android:drawableStart="@drawable/ic_menu_email" />
 
     <EditText
         android:id="@+id/password"
@@ -83,8 +101,8 @@
         android:drawableStart="@drawable/ic_menu_password" />
 
     <Button
-        android:id="@+id/login"
-        android:text="@string/action_sign_in"
+        android:id="@+id/signup"
+        android:text="Sign Up"
         android:textColor="#FFFFFFFF"
         android:textSize="20sp"
         android:fontFamily="@font/quicksand"
@@ -104,36 +122,5 @@
         app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintVertical_bias="0.2" />
 
-    <TextView
-        android:id="@+id/signuplink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/action_sign_up"
-        android:textSize="15sp"
-        android:textColor="@color/colorGrey"
-        android:textStyle="bold"
-        android:fontFamily="@font/quicksand"
-        android:clickable="true"
-        android:focusable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login"
-        />
 
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="64dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
