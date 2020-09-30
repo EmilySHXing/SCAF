@@ -44,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = usernameEditText.getText().toString();
+                final String username = usernameEditText.getText().toString();
                 String name = nameEditText.getText().toString();
                 String petname = petnameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
@@ -69,7 +69,10 @@ public class RegisterActivity extends AppCompatActivity {
                                 Toast.makeText(RegisterActivity.this, "Sign up unsuccessful, please try again!", Toast.LENGTH_SHORT).show();
                             }
                             else {
-                                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                Intent i = new Intent(RegisterActivity.this, MainActivity.class);
+                                i.putExtra("USER_EMAIL", username);
+                                i.putExtra("USER_NAME", "User");
+                                startActivity(i);
                             }
                         }
                     });
