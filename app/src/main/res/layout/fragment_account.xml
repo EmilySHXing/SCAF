@@ -5,16 +5,132 @@
     android:id="@+id/account"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".ui.account.AccountFragment">
 
     <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AccountFragment"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/userbkg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorWhite"
+        android:paddingLeft="8dp"
+        android:text="User Profile"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/petbkg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/petbkg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="64dp"
+        android:background="@color/colorWhite"
+        android:paddingLeft="8dp"
+        android:text="Pet Profile"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editbutton"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="username"
+        app:layout_constraintStart_toEndOf="@+id/usericon"
+        app:layout_constraintTop_toTopOf="@+id/usericon" />
+
+    <ImageView
+        android:id="@+id/usericon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/icon_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pet_niteru_cat"
+        tools:src="@drawable/pet_niteru_cat" />
+
+    <ImageView
+        android:id="@+id/caticon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/icon_bg"
+        android:src="@drawable/animal_chara_computer_neko"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usericon"
+        app:srcCompat="@drawable/animal_chara_computer_neko" />
+
+    <TextView
+        android:id="@+id/petage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Age: pet_age"
+        app:layout_constraintStart_toEndOf="@+id/caticon"
+        app:layout_constraintTop_toBottomOf="@+id/petgender" />
+
+    <TextView
+        android:id="@+id/petweight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Weight: pet_weight"
+        app:layout_constraintStart_toEndOf="@+id/caticon"
+        app:layout_constraintTop_toBottomOf="@+id/petage" />
+
+    <TextView
+        android:id="@+id/petname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Name: pet_name"
+        app:layout_constraintStart_toEndOf="@+id/caticon"
+        app:layout_constraintTop_toTopOf="@+id/caticon" />
+
+    <TextView
+        android:id="@+id/petgender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Gender: Male/Female"
+        app:layout_constraintStart_toEndOf="@+id/caticon"
+        app:layout_constraintTop_toBottomOf="@+id/petname" />
+
+    <Button
+        android:id="@+id/editbutton"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="4dp"
+        android:padding="0dp"
+        android:text="Edit"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/petname"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
