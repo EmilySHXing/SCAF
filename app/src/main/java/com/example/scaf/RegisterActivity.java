@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         usernameEditText = findViewById(R.id.username);
         nameEditText = findViewById(R.id.name);
-        petnameEditText = findViewById(R.id.petage);
+        petnameEditText = findViewById(R.id.petname);
         passwordEditText = findViewById(R.id.password);
         signupButton = findViewById(R.id.signup);
         loginTextView = findViewById(R.id.loginlink);

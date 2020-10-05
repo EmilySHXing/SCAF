@@ -66,19 +66,19 @@
         android:id="@+id/username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:hint="@string/prompt_email"
-        android:fontFamily="@font/quicksand"
-        android:textStyle="bold"
+        android:drawableStart="@drawable/ic_menu_email"
         android:drawableLeft="@drawable/ic_menu_email"
+        android:fontFamily="@font/quicksand"
+        android:hint="@string/prompt_email"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/petage"
-        android:drawableStart="@drawable/ic_menu_email" />
+        app:layout_constraintTop_toBottomOf="@+id/petname" />
 
     <EditText
         android:id="@+id/password"
