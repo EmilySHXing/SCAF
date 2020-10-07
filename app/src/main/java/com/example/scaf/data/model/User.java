@@ -4,14 +4,12 @@ public class User {
     private String userId;
     private String displayName;
     private String petName;
-    private String password;
 
 
-    public User(String userId, String displayName, String petName, String password) {
+    public User(String userId, String displayName, String petName) {
         this.userId = userId;
         this.displayName = displayName;
         this.petName = petName;
-        this.password = password;
     }
 
     public String getUserId() {
@@ -21,4 +19,8 @@ public class User {
     public String getDisplayName() {
         return displayName;
     }
+
+    public String getPetName() {return petName;}
+
+
 }

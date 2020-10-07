@@ -29,44 +29,10 @@
         />
 
     <EditText
-        android:id="@+id/name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="24dp"
-        android:hint="@string/prompt_name"
-        android:fontFamily="@font/quicksand"
-        android:textStyle="bold"
-        android:drawableLeft="@drawable/ic_menu_account"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signuptitle"
-        android:drawableStart="@drawable/ic_menu_account" />
-
-    <EditText
-        android:id="@+id/petname"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:hint="@string/prompt_pet_name"
-        android:fontFamily="@font/quicksand"
-        android:textStyle="bold"
-        android:drawableLeft="@drawable/ic_menu_smallpet"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        android:drawableStart="@drawable/ic_menu_smallpet" />
-
-    <EditText
         android:id="@+id/username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:drawableStart="@drawable/ic_menu_email"
@@ -78,14 +44,49 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/petname" />
+        app:layout_constraintTop_toBottomOf="@+id/signuptitle" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
+        android:hint="@string/prompt_name"
+        android:fontFamily="@font/quicksand"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/ic_menu_account"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        android:drawableStart="@drawable/ic_menu_account" />
+
+<!--    <EditText-->
+<!--        android:id="@+id/petname"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="24dp"-->
+<!--        android:hint="@string/prompt_pet_name"-->
+<!--        android:fontFamily="@font/quicksand"-->
+<!--        android:textStyle="bold"-->
+<!--        android:drawableLeft="@drawable/ic_menu_smallpet"-->
+<!--        android:selectAllOnFocus="true"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/name"-->
+<!--        android:drawableStart="@drawable/ic_menu_smallpet" />-->
+
 
     <EditText
         android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="24dp"
         android:hint="@string/prompt_password"
         android:fontFamily="@font/quicksand"
@@ -97,7 +98,27 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        android:drawableStart="@drawable/ic_menu_password" />
+
+    <EditText
+        android:id="@+id/repassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Confirm Password"
+        android:fontFamily="@font/quicksand"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/ic_menu_password"
+        android:imeActionLabel="@string/action_sign_in"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password"
         android:drawableStart="@drawable/ic_menu_password" />
 
     <Button
@@ -112,14 +133,14 @@
         android:background="@drawable/buttonshape"
         android:layout_gravity="start"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="64dp"
         android:enabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/repassword"
         app:layout_constraintVertical_bias="0.2" />
 
     <TextView
