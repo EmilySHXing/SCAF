@@ -88,9 +88,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.log_out){
             FirebaseAuth.getInstance().signOut();
-            Toast.makeText(MainActivity.this, "Log out successful!", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(i);
+            Toast.makeText(MainActivity.this, "Log out successful!", Toast.LENGTH_SHORT).show();
         }
         else{
             return super.onOptionsItemSelected(item);

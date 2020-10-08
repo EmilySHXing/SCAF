@@ -88,6 +88,27 @@
         app:srcCompat="@drawable/animal_chara_computer_neko" />
 
     <TextView
+        android:id="@+id/petname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Name: pet_name"
+        app:layout_constraintStart_toEndOf="@+id/caticon"
+        app:layout_constraintTop_toTopOf="@+id/caticon" />
+
+    <TextView
+        android:id="@+id/petgender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Gender: Male/Female"
+        app:layout_constraintStart_toEndOf="@+id/caticon"
+        app:layout_constraintTop_toBottomOf="@+id/petname" />
+
+    <TextView
         android:id="@+id/petage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -108,27 +129,6 @@
         android:text="Weight: pet_weight"
         app:layout_constraintStart_toEndOf="@+id/caticon"
         app:layout_constraintTop_toBottomOf="@+id/petage" />
-
-    <TextView
-        android:id="@+id/petname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="Name: pet_name"
-        app:layout_constraintStart_toEndOf="@+id/caticon"
-        app:layout_constraintTop_toTopOf="@+id/caticon" />
-
-    <TextView
-        android:id="@+id/petgender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Gender: Male/Female"
-        app:layout_constraintStart_toEndOf="@+id/caticon"
-        app:layout_constraintTop_toBottomOf="@+id/petname" />
 
     <Button
         android:id="@+id/editbutton"
