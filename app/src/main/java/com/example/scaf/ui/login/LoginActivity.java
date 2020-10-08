@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -88,7 +89,21 @@ public class LoginActivity extends AppCompatActivity {
                             }
                             else {
                                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                                i.putExtra("USER_NAME", "User");
+
+                                FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                                String name = user.getDisplayName();
+                                for (UserInfo userInfo : user.getProviderData()) {
+                                    if (name == null && userInfo.getDisplayName() != null) {
+                                        name = userInfo.getDisplayName();
+                                    }
+                                }
+
+                                if (name == null){
+                                    name = "User";
+                                }
+
+                                Toast.makeText(LoginActivity.this, "Welcome back, "+name+"!", Toast.LENGTH_SHORT).show();
+                                i.putExtra("USER_NAME", name);
                                 startActivity(i);
                             }
                         }

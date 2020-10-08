@@ -42,14 +42,24 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/username"
+        android:id="@+id/ac_useremail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="user@email.com"
+        app:layout_constraintStart_toEndOf="@+id/usericon"
+        app:layout_constraintTop_toTopOf="@+id/usericon" />
+
+    <TextView
+        android:id="@+id/ac_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:text="username"
         app:layout_constraintStart_toEndOf="@+id/usericon"
-        app:layout_constraintTop_toTopOf="@+id/usericon" />
+        app:layout_constraintTop_toBottomOf="@id/ac_useremail" />
 
     <ImageView
         android:id="@+id/usericon"
