@@ -1,5 +1,10 @@
 package com.example.scaf.ui.functions;
 
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -22,7 +27,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -61,18 +68,45 @@ public class FunctionsFragment extends Fragment {
         ValueEventListener statListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                DataPoint[] points = new DataPoint[5];
+                SimpleDateFormat parser = new SimpleDateFormat("yyyyMMddHHmm");
+                final SimpleDateFormat formatter = new SimpleDateFormat("E HH:mm");
+                DataPoint[] points = new DataPoint[10];
                 int i = 0;
                 for (DataSnapshot snap : snapshot.getChildren()) {
                     String timestamp = snap.getKey();
+                    Date datetime = new Date();
+                    try {
+                        datetime = parser.parse(timestamp);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                     double weight = Double.parseDouble(snap.child("weight").getValue().toString());
-                    points[i] = new DataPoint(Long.valueOf(timestamp), weight);
-                    Log.d("test","Timestamp: " + snap.getKey());
+                    points[i] = new DataPoint(datetime.getTime(), weight);
+                    Log.d("test","Timestamp: " + datetime.getTime() + " " + formatter.format(new Date(datetime.getTime())));
                     Log.d("test", "Weight:" + snap.child("weight").getValue().toString());
                     i += 1;
                 }
                 LineGraphSeries <DataPoint> series = new LineGraphSeries<> (points);
                 graph.addSeries(series);
+                GridLabelRenderer renderer = graph.getGridLabelRenderer();
+                renderer.setHorizontalLabelsAngle(135);
+                renderer.setLabelFormatter(new DefaultLabelFormatter()
+                {
+                    @Override
+                    public String formatLabel(double value, boolean isValueX) {
+                        if (isValueX) {
+                            return formatter.format(new Date((long) value));
+                        }
+                        else {
+                            return super.formatLabel(value, isValueX);
+                        }
+                    }
+                });
+                renderer.setPadding(64);
+                renderer.setTextSize(30f);
+                graph.getViewport().setMinX(points[0].getX());
+                graph.getViewport().setMaxX(points[9].getX());
+                graph.getViewport().setXAxisBoundsManual(true);
             }
 
             @Override
@@ -80,7 +114,7 @@ public class FunctionsFragment extends Fragment {
 
             }
         };
-        refStat.limitToLast(5).addValueEventListener(statListener);
+        refStat.limitToLast(10).addValueEventListener(statListener);
 
         setMeal.setOnClickListener(new View.OnClickListener() {
             @Override
