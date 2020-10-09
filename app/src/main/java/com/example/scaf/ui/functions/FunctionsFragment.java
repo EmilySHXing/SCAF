@@ -61,7 +61,7 @@ public class FunctionsFragment extends Fragment {
         ValueEventListener statListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                DataPoint[] points = new DataPoint[4];
+                DataPoint[] points = new DataPoint[5];
                 int i = 0;
                 for (DataSnapshot snap : snapshot.getChildren()) {
                     String timestamp = snap.getKey();
@@ -80,7 +80,7 @@ public class FunctionsFragment extends Fragment {
 
             }
         };
-        refStat.limitToFirst(4).addValueEventListener(statListener);
+        refStat.limitToLast(5).addValueEventListener(statListener);
 
         setMeal.setOnClickListener(new View.OnClickListener() {
             @Override
