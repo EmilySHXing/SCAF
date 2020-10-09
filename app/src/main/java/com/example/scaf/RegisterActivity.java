@@ -90,10 +90,10 @@ public class RegisterActivity extends AppCompatActivity {
                                     String uid = user.getUid();
                                     mDatabase.child("users").child(uid).child("email").setValue(username);
                                     mDatabase.child("users").child(uid).child("username").setValue(name);
-                                    mDatabase.child("users").child(uid).child("petname").setValue("Pet Name: Default");
-                                    mDatabase.child("users").child(uid).child("age").setValue("Age: Default");
-                                    mDatabase.child("users").child(uid).child("gender").setValue("Gender: Default");
-                                    mDatabase.child("users").child(uid).child("weight").setValue("Weight: Default");
+                                    mDatabase.child("users").child(uid).child("petname").setValue("Default");
+                                    mDatabase.child("users").child(uid).child("age").setValue("Default");
+                                    mDatabase.child("users").child(uid).child("gender").setValue("Default");
+                                    mDatabase.child("users").child(uid).child("weight").setValue("Default");
 
                                     UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
                                     user.updateProfile(profileUpdates)
