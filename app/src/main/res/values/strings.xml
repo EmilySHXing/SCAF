@@ -19,6 +19,8 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="slogan">Smart Meal Planning For Your Cat</string>
+    <string name="user_profile">User Profile</string>
+    <string name="pet_profile">Pet Profile</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_account">Account</string>

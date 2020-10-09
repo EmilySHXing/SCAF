@@ -26,6 +26,14 @@ import com.example.scaf.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Objects;
 
 public class AccountFragment extends Fragment {
 
@@ -34,8 +42,11 @@ public class AccountFragment extends Fragment {
     private ConstraintLayout mConstraintLayout;
     private Button edit_btn, update_btn;
     private View customView;
-    private TextView petNameTV, petGenderTV, petAgeTV, petWeightTV;
+    private TextView petNameTV, petGenderTV, petAgeTV, petWeightTV, useremailTV, usernameTV;
     private static final String TAG = "AccountFragment";
+    private DatabaseReference mDatabase;
+    private FirebaseUser user;
+    private String pet_name, pet_gender, pet_age, pet_weight, username, email;
 
     public static AccountFragment newInstance() {
         return new AccountFragment();
@@ -48,40 +59,70 @@ public class AccountFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_account, container, false);
         Log.d(TAG, "Test on account fragment");
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            // Name, email address
-            String name = user.getDisplayName();
-            String email = user.getEmail();
-
-            for (UserInfo userInfo : user.getProviderData()) {
-                if (name == null && userInfo.getDisplayName() != null) {
-                    name = userInfo.getDisplayName();
-                }
-            }
-
-            TextView useremail = (TextView)view.findViewById(R.id.ac_useremail);
-            String e = "Email: " + email;
-            useremail.setText(e);
-
-            TextView username = (TextView)view.findViewById(R.id.ac_username);
-            String n = "Username: " + name;
-            username.setText(n);
-        }
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         edit_btn = view.findViewById(R.id.editbutton);
         mConstraintLayout = view.findViewById(R.id.account);
+        useremailTV = (TextView)view.findViewById(R.id.ac_useremail);
+        usernameTV = (TextView)view.findViewById(R.id.ac_username);
         petNameTV = view.findViewById(R.id.petname);
         petGenderTV = view.findViewById(R.id.petgender);
         petAgeTV = view.findViewById(R.id.petage);
         petWeightTV = view.findViewById(R.id.petweight);
+        String uid = user.getUid();
+
+        mDatabase.child("users").child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Log.d(TAG, String.valueOf((HashMap<String, Object>) snapshot.getValue()));  //prints "Do you have data? You'll love Firebase."
+                HashMap<String, Object> user_profile = (HashMap<String, Object>)snapshot.getValue();
+                if (user_profile != null){
+                    pet_name=(String)user_profile.get("petname");
+                    pet_gender=(String)user_profile.get("gender");
+                    pet_age=(String)user_profile.get("age");
+                    pet_weight=(String)user_profile.get("weight");
+                    username = (String)user_profile.get("username");
+                    email = (String)user_profile.get("email");
+
+                    usernameTV.setText(username);
+                    useremailTV.setText(email);
+                    petNameTV.setText("Name: "+pet_name);
+                    petGenderTV.setText("Gender: "+pet_gender);
+                    petAgeTV.setText("Age: "+pet_age+ " yrs");
+                    petWeightTV.setText("Weight: "+pet_weight+ " lbs");
+
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        });
 
         edit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LayoutInflater inflater = LayoutInflater.from(getActivity());
                 customView = inflater.inflate(R.layout.account_edit,null);
+
+                EditText petNameTextView = customView.findViewById(R.id.edit_pet_name);
+                EditText petAgeTextView = customView.findViewById(R.id.edit_pet_age);
+                EditText petWeightTextView = customView.findViewById(R.id.edit_pet_weight);
+                RadioButton petGenderButton;
+                if (pet_gender.equals("Male")){
+                    petGenderButton = customView.findViewById(R.id.radio_male);
+                }
+                else{
+                    petGenderButton = customView.findViewById(R.id.radio_female);
+                }
+
+                petNameTextView.setText(pet_name);
+                petGenderButton.setChecked(true);
+                petAgeTextView.setText(pet_age);
+                petWeightTextView.setText(pet_weight);
+
                 // Initialize a new instance of popup window
                 mPopupWindow = new PopupWindow(
                         customView,
@@ -98,6 +139,7 @@ public class AccountFragment extends Fragment {
 
                 update_btn = customView.findViewById(R.id.edit_btn);
 
+
                 update_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -109,20 +151,16 @@ public class AccountFragment extends Fragment {
                         int selectedId=petSexGroup.getCheckedRadioButtonId();
                         RadioButton petGenderButton = customView.findViewById(selectedId);
 
-                        String pet_name = "Pet Name: "+petNameTextView.getText().toString();
-                        String pet_age = "Age: "+petAgeTextView.getText().toString() + " yrs";
-                        String pet_weight = "Weight: "+petWeightTextView.getText().toString()+ " lbs";
-                        String pet_gender = "Gender: "+petGenderButton.getText().toString();
+                        String pet_name = petNameTextView.getText().toString();
+                        String pet_age = petAgeTextView.getText().toString();
+                        String pet_weight = petWeightTextView.getText().toString();
+                        String pet_gender = petGenderButton.getText().toString();
 
-                        petNameTV.setText(pet_name);
-                        petGenderTV.setText(pet_gender);
-                        petAgeTV.setText(pet_age);
-                        petWeightTV.setText(pet_weight);
-
-                        petNameTextView.setText(pet_name);
-                        petGenderButton.setChecked(true);
-                        petAgeTextView.setText(pet_age);
-                        petWeightTextView.setText(pet_weight);
+                        String uid = user.getUid();
+                        mDatabase.child("users").child(uid).child("petname").setValue(pet_name);
+                        mDatabase.child("users").child(uid).child("age").setValue(pet_age);
+                        mDatabase.child("users").child(uid).child("weight").setValue(pet_weight);
+                        mDatabase.child("users").child(uid).child("gender").setValue(pet_gender);
 
                         // Dismiss the popup window
                         mPopupWindow.dismiss();

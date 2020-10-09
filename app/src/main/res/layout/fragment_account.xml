@@ -11,18 +11,23 @@
     <TextView
         android:id="@+id/userbkg"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="180dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:background="@color/colorWhite"
-        android:paddingLeft="8dp"
-        android:text="User Profile"
-        android:textSize="18sp"
+        android:fontFamily="@font/quicksand"
+        android:paddingLeft="12dp"
+        android:paddingTop="12dp"
+        android:text="@string/user_profile"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/petbkg"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/petbkg"
@@ -30,26 +35,62 @@
         android:layout_height="0dp"
         android:layout_marginBottom="64dp"
         android:background="@color/colorWhite"
-        android:paddingLeft="8dp"
-        android:text="Pet Profile"
-        android:textSize="18sp"
+        android:fontFamily="@font/quicksand"
+        android:paddingLeft="12dp"
+        android:paddingTop="12dp"
+        android:text="@string/pet_profile"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editbutton"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ac_email"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Email:"
+        android:fontFamily="@font/quicksand"
+        android:textStyle="bold"
+        android:textColor="@color/colorGrey"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/usericon"
+        app:layout_constraintTop_toTopOf="@+id/usericon" />
 
     <TextView
         android:id="@+id/ac_useremail"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:text="user@email.com"
+        android:fontFamily="@font/quicksand"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@+id/usericon"
-        app:layout_constraintTop_toTopOf="@+id/usericon" />
+        app:layout_constraintTop_toBottomOf="@id/ac_email" />
+
+    <TextView
+        android:id="@+id/ac_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Username: "
+        android:fontFamily="@font/quicksand"
+        android:textStyle="bold"
+        android:textColor="@color/colorGrey"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/usericon"
+        app:layout_constraintTop_toBottomOf="@id/ac_useremail" />
 
     <TextView
         android:id="@+id/ac_username"
@@ -57,9 +98,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:text="username"
+        android:text="User"
+        android:fontFamily="@font/quicksand"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@+id/usericon"
-        app:layout_constraintTop_toBottomOf="@id/ac_useremail" />
+        app:layout_constraintTop_toBottomOf="@id/ac_name" />
 
     <ImageView
         android:id="@+id/usericon"
@@ -67,7 +112,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/icon_bg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -80,7 +125,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="96dp"
         android:background="@drawable/icon_bg"
         android:src="@drawable/animal_chara_computer_neko"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,6 +139,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:text="Name: pet_name"
+        android:fontFamily="@font/quicksand"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@+id/caticon"
         app:layout_constraintTop_toTopOf="@+id/caticon" />
 
@@ -105,6 +154,10 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:text="Gender: Male/Female"
+        android:fontFamily="@font/quicksand"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@+id/caticon"
         app:layout_constraintTop_toBottomOf="@+id/petname" />
 
@@ -116,6 +169,10 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:text="Age: pet_age"
+        android:fontFamily="@font/quicksand"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@+id/caticon"
         app:layout_constraintTop_toBottomOf="@+id/petgender" />
 
@@ -127,19 +184,27 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:text="Weight: pet_weight"
+        android:fontFamily="@font/quicksand"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@+id/caticon"
         app:layout_constraintTop_toBottomOf="@+id/petage" />
 
     <Button
         android:id="@+id/editbutton"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_gravity="start"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="4dp"
-        android:padding="0dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/buttonshape"
+        android:fontFamily="@font/quicksand"
         android:text="Edit"
-        android:textSize="12sp"
+        android:textColor="#FFFFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/petname"
         app:layout_constraintEnd_toEndOf="parent" />
 
