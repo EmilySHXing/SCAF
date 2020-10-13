@@ -7,6 +7,7 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.scaf.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.jjoe64.graphview.series.DataPoint;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -29,6 +37,9 @@ import static android.graphics.Typeface.BOLD;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+    private DatabaseReference mDatabase;
+    private DatabaseReference refConfig;
+    private DatabaseReference refStat;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -65,6 +76,56 @@ public class HomeFragment extends Fragment {
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         dateTextView.setText(dateSpan);
         monthTextView.setText(currentMonth);
+
+        final TextView mealTextView = root.findViewById(R.id.meal_right);
+        final TextView plateTextView = root.findViewById(R.id.plate_right);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        refConfig = mDatabase.child("config");
+        refStat = mDatabase.child("stat");
+
+        ValueEventListener configListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String config = snapshot.getValue().toString();
+                String portion = config.substring(12);
+                String datetime = config.substring(0,12);
+                SimpleDateFormat parser = new SimpleDateFormat("yyyyMMddHHmm");
+                SimpleDateFormat formatter = new SimpleDateFormat(
+                        "MMM. dd, yyyy\nE HH:mm", Locale.US);
+                Date nextDate = new Date();
+                try {
+                    nextDate = parser.parse(datetime);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                datetime = formatter.format(nextDate);
+                mealTextView.setText(String.format("%s\nPortion: %s",datetime,portion));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        refConfig.addValueEventListener(configListener);
+
+        ValueEventListener statListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snap : snapshot.getChildren()) {
+                    double weight = Double.parseDouble(snap.child("weight").getValue().toString());
+                    plateTextView.setText(String.format("%.1f grams", weight));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        refStat.limitToLast(1).addValueEventListener(statListener);
+
         /*
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
