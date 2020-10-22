@@ -114,7 +114,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snap : snapshot.getChildren()) {
-                    double weight = Double.parseDouble(snap.child("weight").getValue().toString());
+                    double weight = Double.parseDouble(snap.getValue().toString());
                     plateTextView.setText(String.format("%.1f grams", weight));
                 }
             }

@@ -80,10 +80,8 @@ public class FunctionsFragment extends Fragment {
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
-                    double weight = Double.parseDouble(snap.child("weight").getValue().toString());
+                    double weight = Double.parseDouble(snap.getValue().toString());
                     points[i] = new DataPoint(datetime.getTime(), weight);
-                    Log.d("test","Timestamp: " + datetime.getTime() + " " + formatter.format(new Date(datetime.getTime())));
-                    Log.d("test", "Weight:" + snap.child("weight").getValue().toString());
                     i += 1;
                 }
                 LineGraphSeries <DataPoint> series = new LineGraphSeries<> (points);
