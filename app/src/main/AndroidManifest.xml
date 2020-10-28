@@ -9,9 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterActivity" >
-
-        </activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".PswrstActivity" />
         <activity android:name=".Notices" />
         <activity android:name=".Functions" />
         <activity android:name=".Account" />

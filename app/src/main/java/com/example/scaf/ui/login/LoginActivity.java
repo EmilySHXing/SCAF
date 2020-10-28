@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.scaf.MainActivity;
+import com.example.scaf.PswrstActivity;
 import com.example.scaf.R;
 import com.example.scaf.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText passwordEditText;
     Button loginButton;
     TextView registerText;
+    TextView pswrstText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.password);
         loginButton = findViewById(R.id.login);
         registerText = findViewById(R.id.signuplink);
+        pswrstText = findViewById(R.id.pswrstlink);
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         FirebaseAuth.AuthStateListener mAuthStateListener = new FirebaseAuth.AuthStateListener() {
@@ -119,6 +122,14 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
 
+            }
+        });
+
+        pswrstText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, PswrstActivity.class);
+                startActivity(intent);
             }
         });
 
