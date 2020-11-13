@@ -140,7 +140,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:src="@drawable/pet_cat_manpuku"
+        android:src="@drawable/pet_cat_kedukuroi"
         app:layout_constraintBottom_toTopOf="@+id/meal_right"
         app:layout_constraintEnd_toEndOf="parent" />
 

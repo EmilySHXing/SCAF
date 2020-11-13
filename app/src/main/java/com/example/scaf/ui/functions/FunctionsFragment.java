@@ -70,7 +70,7 @@ public class FunctionsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 SimpleDateFormat parser = new SimpleDateFormat("yyyyMMddHHmm");
                 final SimpleDateFormat formatter = new SimpleDateFormat("E HH:mm");
-                DataPoint[] points = new DataPoint[10];
+                DataPoint[] points = new DataPoint[30];
                 int i = 0;
                 for (DataSnapshot snap : snapshot.getChildren()) {
                     String timestamp = snap.getKey();
@@ -103,7 +103,7 @@ public class FunctionsFragment extends Fragment {
                 renderer.setPadding(64);
                 renderer.setTextSize(30f);
                 graph.getViewport().setMinX(points[0].getX());
-                graph.getViewport().setMaxX(points[9].getX());
+                graph.getViewport().setMaxX(points[29].getX());
                 graph.getViewport().setXAxisBoundsManual(true);
             }
 
@@ -112,7 +112,7 @@ public class FunctionsFragment extends Fragment {
 
             }
         };
-        refStat.limitToLast(10).addValueEventListener(statListener);
+        refStat.limitToLast(30).addValueEventListener(statListener);
 
         setMeal.setOnClickListener(new View.OnClickListener() {
             @Override
