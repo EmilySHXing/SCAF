@@ -2,6 +2,8 @@ package com.example.scaf.ui.notices;
 
 import androidx.lifecycle.ViewModelProviders;
 
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,8 +13,10 @@ import androidx.fragment.app.Fragment;
 import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.style.AlignmentSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.ImageSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
@@ -86,42 +90,52 @@ public class NoticesFragment extends Fragment {
 
                     String str;
                     int ind;
+                    Drawable drawable;
                     if (status.equals("full"))
                     {
                         ind = 24;
-                        str = "Sufficient Food in Plate\n"+ timestamp;
+                        str = "    Enough Food in Plate\n"+ timestamp;
+                        drawable = getResources().getDrawable(R.drawable.pet_cat_manpuku);
                     }
                     else
                     {
-                        ind = 16;
-                        str = "No Food in Plate\n" + timestamp;
+                        ind = 20;
+                        str = "    No Food in Plate\n" + timestamp;
+                        drawable = getResources().getDrawable(R.drawable.pet_cat_hungry);
                     }
 
 
-                    Spannable strSpan = new SpannableString(str);
+                    SpannableStringBuilder strSpan = new SpannableStringBuilder(str);
+                    drawable.setBounds(0,0,180,180);
+                    ImageSpan imgSpan = new ImageSpan(drawable, ImageSpan.ALIGN_BASELINE);
                     strSpan.setSpan(
                             new StyleSpan(BOLD),
-                            0,ind,
+                            1,ind,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     strSpan.setSpan(
-                            new RelativeSizeSpan(1.2f),
-                            0,ind,
+                            new RelativeSizeSpan(1.4f),
+                            1,ind,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     strSpan.setSpan(
                             new ForegroundColorSpan(getResources().getColor(R.color.colorCoffee)),
-                            0, ind,
+                            1, ind,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     strSpan.setSpan(
                             new AlignmentSpan.Standard(Layout.Alignment.ALIGN_OPPOSITE),
                             ind+1, ind+15,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     strSpan.setSpan(
+                            imgSpan,
+                            0,
+                            1,
+                            Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+                    strSpan.setSpan(
                             new ForegroundColorSpan(getResources().getColor(R.color.colorBrown)),
                             ind+1, ind+15,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     notices[i].setText(strSpan);
-                    notices[i].setPadding(50,10,50,10);
-                    notices[i].setBackgroundColor(getResources().getColor(R.color.colorWhite));
+                    notices[i].setPadding(50,40,30,10);
+                    notices[i].setBackground(getResources().getDrawable(R.drawable.notice_bkg));
                     i += 1;
                 }
                 for (int j = i-1; j >= 0; j--)
